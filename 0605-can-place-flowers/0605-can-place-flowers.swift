@@ -28,6 +28,6 @@ class Solution {
             n -= 1
         }
 
-        return n == 0 ? true : false
+        return n <= 0 ? true : false
     }
 }
