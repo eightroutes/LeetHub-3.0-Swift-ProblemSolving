@@ -8,7 +8,7 @@ class Solution {
                 let isLeftEmpty = (i==0) || (flowerbed[i-1]==0)
                 let isRightEmpty = (i==flowerbed.count-1) || (flowerbed[i+1]==0)
 
-                if isLeftEmtpy && isRightEmpty {
+                if isLeftEmpty && isRightEmpty {
                     flowerbed[i] = 1
                     count += 1
                     if count >= n {
