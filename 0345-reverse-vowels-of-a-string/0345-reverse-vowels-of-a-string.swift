@@ -1,6 +1,6 @@
 class Solution {
     func reverseVowels(_ s: String) -> String {
-        let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
+        let vowels = ["a", "e", "i", "o", "u"]
         var vowelArr = [Character]()
         var sArr = Array(s)
 
