@@ -1,33 +1,18 @@
 class Solution {
     func canPlaceFlowers(_ flowerbed: [Int], _ n: Int) -> Bool {
-        let bedCount = flowerbed.count
+        var count = 0
         var flowerbed = flowerbed
-        var n = n
-        if n == 0 {
-            return true
-        }
-        if bedCount == 1 {
-            if flowerbed[0] == 0 && n == 1 {
-                return true
-            } else {
-                return false
+        for i in 0..<flowerbed.count {
+            if flowerbed[i] == 0 {
+                let isEmptyLeft = (i == 0) || (flowerbed[i-1] == 0)
+                let isEmptyRight = (i == flowerbed.count-1) || (flowerbed[i+1] == 0)
+                
+                if isEmptyLeft && isEmptyRight {
+                    flowerbed[i] = 1
+                    count += 1
+                }
             }
         }
-        if flowerbed[0] == 0 && flowerbed[1] == 0 {
-            flowerbed[0] = 1
-            n -= 1
-        }
-        for i in 1..<bedCount-1 {
-            if flowerbed[i-1] == 0 && flowerbed[i+1] == 0 && flowerbed[i] == 0{
-                flowerbed[i] = 1
-                n -= 1
-            }
-        }
-        if flowerbed[bedCount-1] == 0 && flowerbed[bedCount-2] == 0 {
-            flowerbed[bedCount-1] = 1
-            n -= 1
-        }
-
-        return n <= 0 ? true : false
+        return count >= n
     }
 }
