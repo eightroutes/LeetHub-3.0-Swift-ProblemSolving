@@ -2,16 +2,26 @@ class Solution {
     func equalPairs(_ grid: [[Int]]) -> Int {
             
         var count = 0
-        var col = [Int]()
+        var rows = [[Int]]()
+        var cols = Array(repeating: [Int](), count: grid.count)
         
         for i in 0..<grid.count {
             let row = grid[i]
-            if row == col { count += 1 }
-            col = [Int]()
+    //        print(row)
             for j in 0..<grid.count {
-                col.append(grid[j][i])
+                cols[i].append(grid[j][i])
             }
-            print(col)
+            rows.append(row)
+        }
+        
+    //    print(rows, cols)
+        
+        for i in 0..<grid.count {
+            for j in 0..<grid.count {
+                if rows[i] == cols[j] {
+                    count += 1
+                }
+            }
         }
         
         
