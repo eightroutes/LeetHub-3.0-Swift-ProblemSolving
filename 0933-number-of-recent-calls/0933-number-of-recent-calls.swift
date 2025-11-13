@@ -11,10 +11,11 @@ class RecentCounter {
         let range = [t - 3000, t]
         counters.append(t)
         
-        while !counters.isEmpty && counters.first! < t - 3000 {
-            counters.removeFirst()
+        for counter in counters {
+            if counter < t-3000 {
+                counters.removeFirst()
+            }
         }
-        
 //        print(counters.count)
         return counters.count
     }
