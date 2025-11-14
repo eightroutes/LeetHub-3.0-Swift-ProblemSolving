@@ -10,16 +10,14 @@
  */
 class Solution {
     func deleteMiddle(_ head: ListNode?) -> ListNode? {
-        // 노드 하나일 때
-        if head?.next == nil {
-            return nil
-        }
+        
+        if head?.next == nil { return nil }
 
-        var prev: ListNode? = nil // slow의 이전
         var slow = head
         var fast = head
+        var prev: ListNode? = nil
 
-        while fast != nil && fast?.next != nil {
+        while fast?.next != nil {
             prev = slow
             slow = slow?.next
             fast = fast?.next?.next
