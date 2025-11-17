@@ -15,16 +15,11 @@
  */
 class Solution {
     func goodNodes(_ root: TreeNode?) -> Int {
-        var goodCount = 1
-
-        if root?.left == nil && root?.right == nil {
-            return goodCount
-        }
-
-        return findGoodNodes(root!, root!.val)
+        guard let root else { return 0 }
+        return countGoodNodes(root, root.val)
     }
 
-    func findGoodNodes(_ node: TreeNode?, _ maxSoFar: Int) -> Int {
+    func countGoodNodes(_ node: TreeNode?, _ maxSoFar: Int) -> Int {
         guard let node else { return 0 }
 
         var count = 0
@@ -34,8 +29,8 @@ class Solution {
 
         let newMax = max(maxSoFar, node.val)
 
-        count += findGoodNodes(node.left, newMax)
-        count += findGoodNodes(node.right, newMax)
+        count += countGoodNodes(node.left, newMax)
+        count += countGoodNodes(node.right, newMax)
 
         return count
     }
