@@ -15,25 +15,24 @@
  */
 class Solution {
     func leafSimilar(_ root1: TreeNode?, _ root2: TreeNode?) -> Bool {
-        var leaves1: [Int] = []
-        var leaves2: [Int] = []
-
-        collectLeaves(root1, &leaves1)
-        collectLeaves(root2, &leaves2)
-
-        return leaves1 == leaves2
+    
+        var leaves1 = [Int]()
+        var leaves2 = [Int]()
         
+        collect(root1, &leaves1)
+        collect(root2, &leaves2)
+        
+        return leaves1 == leaves2
     }
 
-    func collectLeaves(_ node: TreeNode?, _ leaves: inout [Int]) {
+    func collect(_ node: TreeNode?, _ leaves: inout [Int]) {
         guard let node else { return }
-
+        
+        collect(node.left, &leaves)
+        collect(node.right, &leaves)
+        
         if node.left == nil && node.right == nil {
             leaves.append(node.val)
-            return
         }
-
-        collectLeaves(node.left, &leaves)
-        collectLeaves(node.right, &leaves)
     }
 }
